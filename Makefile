@@ -26,6 +26,7 @@ ERROR   := $(wildcard $(TESTDIR)/ERROR/*)
 .PHONY: check jpg exec test demo template clean
 
 check: $(CP)/
+	@clear
 	@echo "\033[90m pwd       =\033[0m"  $(shell pwd)
 	@echo "\033[90m workspace =\033[0m"  $(shell cd $(workspace) ; pwd)
 	@echo "\033[90m PROJECT   =\033[0m"  $(shell cd $(PROJECT) ; pwd)
@@ -36,6 +37,9 @@ check: $(CP)/
 	@echo "\033[94m TESTDIR   =\033[0m"  $(shell cd $(TESTDIR) ; pwd)
 	@echo "\033[94m     ls -F =\033[0m"  $(shell cd $(TESTDIR) ; ls -F) 
 	@echo "\033[96m EXEC      =\033[0m"  $(EXEC)
+	@echo "\033[95m which sed =\033[0m"  $(shell which sed)
+	@echo "\033[95m which tar =\033[0m"  $(shell which tar)
+	@echo "\033[95m which dot =\033[0m"  $(shell which dot)
 
 jpg:
 	$(MAKE) -silent -C DOT/ jpg

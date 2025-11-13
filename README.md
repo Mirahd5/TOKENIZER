@@ -1,4 +1,4 @@
-# Conception d'automates reconnaisseurs
+# Conception OO d'automates reconnaisseurs
 
 #### Objectif du TP
 
@@ -28,7 +28,7 @@ constituants d'un texte en couleur comme le fait un éditeur de texte.
 
 
 # Installation
-
+---
 > __IMPORTANT__ : commencez par cliquer sur `Update Fork` pour récupérer les dernières modifications.
 ---
 
@@ -55,8 +55,10 @@ constituants d'un texte en couleur comme le fait un éditeur de texte.
 * Dans un terminal dans le répertoire `Tokenizer/` : 
   testez le `Makefile` à dans le répertoire `Tokenizer/` en exécutant les commandes suivantes
 
-  1. `make` : vérifiez le positionnement des variables avant de continuer
-
+  1. `make`
+      * vérifiez le positionnement des variables avant de continuer
+      * vérifiez la présence des outils `sed`, `tar` et `dot` qui seront nécessaires
+     
   2. `make jpg` : génère les images des automates à partir des fichiers `.dot`
 
   3. `make exec` : génère les `.class` à partir des fichiers `.java`

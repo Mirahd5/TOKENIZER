@@ -10,11 +10,10 @@ TEMPLATE := Ident.dot.md String.dot.md Comment.dot.md
 
 jpg: $(DOT_FILES:%.dot.md=%.jpg)
 
-all: jpg md
+all: jpg
 
 clean:
 	@rm -f $(DOT_FILES:%.dot.md=%.jpg)
-	@rm -f $(DOT_FILES:%.dot.md=%.dot)
 
 template: $(TEMPLATE)
 	make clean
