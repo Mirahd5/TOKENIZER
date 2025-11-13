@@ -12,7 +12,9 @@ constituants d'un texte en couleur comme le fait un éditeur de texte.
 
 #### Rendu de TP avant le `mercredi 26 novembre 23h59`
 
-> Passé(e) cette date, vous aurez 0 si vous n'avez pas déposé sur le site
+---
+> __IMPORTANT__ : Passé(e) cette date, vous aurez 0 si vous n'avez pas déposé sur le site les dernières versions des fichiers à rendre :
+---
   * `Ident.dot`, `RecIdent.java`
   * `Comment.dot`, `RecComment.java`
   * `String.dot`, `RecString.java`
@@ -24,9 +26,12 @@ constituants d'un texte en couleur comme le fait un éditeur de texte.
 2. implémentation d'AEF dans un langage OO
 3. application à la colorisation dans un éditeur de code
 
----
 
 # Installation
+
+> __IMPORTANT__ : commencez par cliquer sur `Update Fork` pour récupérer les dernières modifications.
+---
+
 
 #### I. Clonez le dépôt distant dans votre workspace eclipse 
 
@@ -65,7 +70,9 @@ constituants d'un texte en couleur comme le fait un éditeur de texte.
 
  Vous êtes invité dans le projet `TOKENIZER` en tant que `Developer` gitlab ce qui ne vous donne *pas le droit* de modifier la branche `master`. Vous devez donc créer puis travailler sur votre branche.
 
+---
 > __IMPORTANT__ : la commande `make template` finalise l'installation
+---
 
 * elle crée une branche portant votre nom de _login_gricad_ 
   * `git branch` _votre_login_gricad_
@@ -74,7 +81,7 @@ constituants d'un texte en couleur comme le fait un éditeur de texte.
   
 * elle transmet la branche au dépôt distant `gricad-gitlad` avec la commande
   * `git push origin` _votre_login_gricad_
-  
+
 #### IV. Créez un projet Java sous Eclipse ou VSCode et commencez à travailler
 
 Testez vos reconnaisseurs avec les commandes 
@@ -88,6 +95,7 @@ Testez vos reconnaisseurs avec les commandes
 
 * `git push` après avoir fait les `add` et les `commit` de vos fichiers
 
+---
 
 # Travail à réaliser
 
@@ -120,7 +128,7 @@ Testez vos reconnaisseurs avec les commandes
 > Pour chaque reconnaisseur, 
 __faîtes valider l'automate `.dot` avant de passer à son implémentation en `.java`__
 
-#### Exercice 1 : `RecIdent.java` (20min)
+#### Exercice 1 : `RecIdent.java` (30min)
 
 `RecIdent.java` reconnaît les identificateurs de longueur &geq;1, formés de lettres (minuscules et majuscules), de `_` et de digits (`0` à `9`) mais ne commençant pas par un digit.
   * émet la notification 
@@ -134,7 +142,7 @@ __faîtes valider l'automate `.dot` avant de passer à son implémentation en `.
     * «if, then, else, return» sont des identificateurs valides, certains sont en fait des mots-clefs
     * «1_x» n'est pas un ident valide
 
-#### Exercice 2 : `RecString.java` (30min)
+#### Exercice 2 : `RecString.java` (40min)
 
 `RecString.java` reconnaît les String entre `"` (sans saut de ligne `\n`).
   * exemples :  
@@ -142,7 +150,7 @@ __faîtes valider l'automate `.dot` avant de passer à son implémentation en `.
     * "une string contenant des caractères escaped \" \\ \n "
   et notifie via `void string(String recognized)`, le `PrettyPrinter` qui les affiche.
 
-#### Exercice 3 : `RecComment.java` (40min)
+#### Exercice 3 : `RecComment.java` (60min)
 
 * `RecComment.java` reconnaît les commentaires à la `C/Java`
   et notifie via `void comment(String recognized)`, le `PrettyPrinter` qui les affiche.
