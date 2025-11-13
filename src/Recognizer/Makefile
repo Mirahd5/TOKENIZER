@@ -6,7 +6,7 @@ template: RecIdent.java RecString.java RecComment.java
 	git add $(TEMPLATE)
 	git commit -a -m "ADDED: $(TEMPLATE)"
 	git push
-
+	
 # GENERIC RULES
 
 Rec%.java: 

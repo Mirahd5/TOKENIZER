@@ -17,6 +17,7 @@ clean:
 	@rm -f $(DOT_FILES:%.dot.md=%.dot)
 
 template: $(TEMPLATE)
+	make clean
 	git add $(TEMPLATE)
 	git commit -a -m "ADDED: $(TEMPLATE)"
 	git push

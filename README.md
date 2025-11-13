@@ -28,21 +28,24 @@ constituants d'un texte en couleur comme le fait un éditeur de texte.
 
 # Installation
 
-#### I. Dans votre workspace eclipse 
+#### I. Clonez le dépôt distant dans votre workspace eclipse 
 
-* Faîtes un `git clone ...` pour récupérer le clone hébergé sur le dépôt distant [gricad-gitlab](https://gricad-gitlab.univ-grenoble-alpes.fr/)
+  * Faîtes un `git clone` du projet `TOKENIZER` pour lequel vous avez reçu une invitation.
 
-#### II. Créez une branche qui porte le nom avec votre login gricad
+  * Le projet est hébergé sur le dépôt distant [gricad-gitlab](https://gricad-gitlab.univ-grenoble-alpes.fr/) donc la commande sera de la forme
 
-* `git branch` _votre_login_agalan_
-* `git switch` _votre_login_agalan_
+  `git clone https://gricad-gitlab.univ-grenoble-alpes.fr/michael_perin_private_project/aeg_2025/`_votre_login_gricad_`/TOKENIZER.git`
 
-* `git push` : transmet la branche au dépôt distant `gricad-gitlad`
+  en remplaçant la partie en italic par votre _votre_login_gricad_
+
+  * Vous obtenez un répertoire `TOKENIZER` qui contient un projet java
+
   
-#### III. Dans le répertoire `Tokenizer/` 
+#### II. Dans le répertoire `Tokenizer/` 
 
-* Ouvrez le fichier [Makefile](Makefile) et ajustez la variable `workspace` à votre organisation de fichiers
-
+* Ouvrez le fichier [Makefile](Makefile) et ajustez les variables si nécessaire
+  * `login_gricad :=` _votre_login_gricad_ 
+  * `workspace` à votre organisation de fichiers 
 
 * Dans un terminal dans le répertoire `Tokenizer/` : 
   testez le `Makefile` à dans le répertoire `Tokenizer/` en exécutant les commandes suivantes
@@ -57,8 +60,21 @@ constituants d'un texte en couleur comme le fait un éditeur de texte.
 
   5. `make clean` : supprime les fichiers générés
 
-  6. `make template` : crée les fichiers à compléter, exécute les commandes `git` : add, commit, push
 
+#### III. Créez les templates à compléter et une branche qui porte le nom avec votre login gricad
+
+ Vous êtes invité dans le projet `TOKENIZER` en tant que `Developer` gitlab ce qui ne vous donne *pas le droit* de modifier la branche `master`. Vous devez donc créer puis travailler sur votre branche.
+
+> __IMPORTANT__ : la commande `make template` finalise l'installation
+
+* elle crée une branche portant votre nom de _login_gricad_ 
+  * `git branch` _votre_login_gricad_
+  * `git switch` _votre_login_gricad_
+* elle crée les fichiers à compléter et exécute les commandes `git` : add, commit de ces fichiers
+  
+* elle transmet la branche au dépôt distant `gricad-gitlad` avec la commande
+  * `git push origin` _votre_login_gricad_
+  
 #### IV. Créez un projet Java sous Eclipse ou VSCode et commencez à travailler
 
 Testez vos reconnaisseurs avec les commandes 
