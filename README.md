@@ -118,48 +118,66 @@ Testez vos reconnaisseurs avec les commandes
 
 * chaque reconnaisseur notifie le `PrettyPrinter` qui affiche le contenu reconnu dans un couleur appropriée
 
-## Utilisez les modèles de reconnaisseurs
-
-* `DOT/TEMPLATE.dot` contient un modèle de description `.dot`
-* `Recognizer/RecTEMPLATE.java` contient un modèle d'implémentation `.java`
-
 ## Les reconnaisseurs à écrire en `.dot` puis en `.java`
 
 #### Consignes 
 
 > Pour chaque reconnaisseur, 
-__faîtes valider l'automate `.dot` avant de passer à son implémentation en `.java`__
+  * faîtes valider l'automate `.dot` avant de passer à son implémentation en `.java`
+  * testez avec `make test` pour vérifier que vous reconnaissez correctement les tokens
+  * testez avec `make error` pour vérifier que vous détectez les erreurs
 
-#### Exercice 1 : `RecIdent.java` (30min)
+### Exercice 1 : `(a|b)*.aba` (5min)
 
-`RecIdent.java` reconnaît les identificateurs de longueur &geq;1, formés de lettres (minuscules et majuscules), de `_` et de digits (`0` à `9`) mais ne commençant pas par un digit.
-  * émet la notification 
-    * `void ident(String recognized)` 
-    * ou `void keyword(String recognized)` si l'identificateur est un mot-clef
-    * ou `void type(String recognized)` si l'identificateur commence par une majuscule
+* Complétez le fichier `_aba.dot.md` pour décrire un AEF qui reconnaît les mots de la forme `(a|b)*.aba`
+* `make jpg` pour visualiser le résultat
 
-  * exemples :
-    * «_, x, _ABC» sont des identificateurs valides
-    * «Object, Recognizer» sont des identifcateurs valides qui sont en fait des types
-    * «if, then, else, return» sont des identificateurs valides, certains sont en fait des mots-clefs
-    * «1_x» n'est pas un ident valide
 
-#### Exercice 2 : `RecString.java` (40min)
+### Exercice 2 : `Identificateurs` (30min)
 
-`RecString.java` reconnaît les String entre `"` (sans saut de ligne `\n`).
-  * exemples :  
-    * "une string"
-    * "une string contenant des caractères escaped \" \\ \n "
-  et notifie via `void string(String recognized)`, le `PrettyPrinter` qui les affiche.
+Complétez `Ident.dot.md` afin de décrire un AEF qui reconnaît les identificateurs 
+  * de longueur &geq;1, 
+  * formés de lettres (minuscules et majuscules), de `_` et de digits (`0` à `9`) 
+  * mais ne commençant pas par un digit.
 
-#### Exercice 3 : `RecComment.java` (60min)
+Complétez `RecIdent.java` qui implémente l'AEF et émet les notifications 
+  * `void ident(String recognized)` 
+  * ou `void keyword(String recognized)` si l'identificateur est un mot-clef
+  * ou `void type(String recognized)` si l'identificateur commence par une majuscule
 
-* `RecComment.java` reconnaît les commentaires à la `C/Java`
-  et notifie via `void comment(String recognized)`, le `PrettyPrinter` qui les affiche.
-<PRE>
+Exemples :
+  * «_, x, _ABC» sont des identificateurs valides
+  * «Object, Recognizer» sont des identifcateurs valides qui sont en fait des types
+  * «if, then, else, return» sont des identificateurs valides, certains sont en fait des mots-clefs
+  * «1_x» n'est pas un ident valide
+
+### Exercice 3 : `String` (40min)
+
+Complétez `String.dot.md` afin de décrire un AEF qui 
+reconnaît les String entre `"` (sans saut de ligne `\n`).
+
+Complétez `RecString.java` qui implémente cet AEF et notifie, via `void string(String recognized)`, le `PrettyPrinter` qui les affiche.
+
+Exemples :  
+  * "une string"
+  * "une string contenant 3 caractères _escaped_ : [\"] [\\] [\n]"
+
+### Exercice 4 : `Comment` (60min)
+
+Complétez `Comment.dot.md` afin de décrire un AEF qui reconnaît les commentaires à la `C/Java`
+
+Complétez `RecComment.java` implémente cet AEF et notifie, via `void comment(String recognized)`, le `PrettyPrinter` qui les affiche.
+
+Exemples:
+
+```C
 /* un commentaire sur
  * deux lignes 
  */
 
 // un commentaire sur une seule ligne
+```
+
+<PRE>
+/* un commentaire qui contient la string "*/" pose t'il un problème? */
 </PRE>

@@ -30,7 +30,7 @@ public class PrettyPrinter implements Tokenizer.iListener {
   static final String INVERSE = ";7";
   static final String STRIKEOUT = ";9";
 
-  static final String ACCEPT = "90" + BOLD;
+  static final String ACCEPT = "92" + BOLD;
 
   static final String ANY = "90" + BOLD + FADED;
   static final String ERROR = "91";
@@ -96,12 +96,6 @@ public class PrettyPrinter implements Tokenizer.iListener {
   }
 
   @Override
-  public void abc(String word) {
-    updateFont(STRING + BOLD);
-    ps.print(word);
-  }
-
-  @Override
   public void any(String string) {
     updateFont(ANY);
     ps.print(string);
@@ -144,10 +138,10 @@ public class PrettyPrinter implements Tokenizer.iListener {
     pp.start();
 
     pp.error("error", "explanation");
+    pp.accept("abc");
 
     pp.any("any");
     pp.separator("separator");
-    pp.abc("abc");
     pp.opening("opening");
     pp.command("command");
     pp.closing("closing");

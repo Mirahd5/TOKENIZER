@@ -10,26 +10,20 @@ package Recognizer;
 
 public class RecABC extends aRecognizer implements iRecognizer {
 
+  private iRecognizer.iListener listener;
+
   // CONSTRUCTOR
 
-  RecABC(iCharStream cs, iListener lr) {
+  RecABC(iCharStream cs, iRecognizer.iListener lr) {
     super(cs);
     this.listener = lr;
   }
-
-  // LISTENER
-
-  public interface iListener extends iRecognizer.iListener {
-    void abc(String recognized);
-  }
-
-  private iListener listener;
 
   // NOTIFICATION
 
   @Override
   public void notifyAccept(String recognized) {
-    listener.abc(recognized);
+    listener.accept(recognized);
   }
 
   @Override

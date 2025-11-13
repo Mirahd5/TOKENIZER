@@ -38,7 +38,6 @@ public class Tokenizer {
 
   public interface iListener
       extends
-      RecABC.iListener,
       RecAny.iListener,
       RecCommand.iListener,
       RecOMark.iListener,
