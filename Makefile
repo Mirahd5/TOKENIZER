@@ -1,5 +1,5 @@
 workspace := ..
-login_gricad := 
+login_gricad := hajjdiam
 
 # == DO NOT MODIFY WHAT FOLLOWS ==
 
