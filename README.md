@@ -86,12 +86,13 @@ constituants d'un texte en couleur comme le fait un éditeur de texte.
 
 #### IV. Créez un projet Java sous Eclipse ou VSCode et commencez à travailler
 
-Testez vos reconnaisseurs avec les commandes 
+* sous Eclipse :
+  * `File / Open Projects from FileSystem...` 
+  * `Import source:` sélectionner le répertoire `TOKENIZER` ; `finish`
+  * dans `src` : `Tokenizer.java` : `run as a Java Applications` avec le paramètre README.md
 
-  * `make test` : lance l'exécutable sur les fichiers du répertoire `TEST/OK/`
-
-  * `make error` : lance l'exécutable sur les fichiers du répertoire `TEST/ERROR/`
-
+* sous VSCode :
+  * `File / Add Folder to Workspace...` : sélectionner le répertoire `TOKENIZER`
 
 #### V. Vous devez rendre le TP avant le 26 novembre 23h59 (sinon c'est 0) 
 
@@ -126,7 +127,9 @@ Testez vos reconnaisseurs avec les commandes
   * faîtes valider l'automate `.dot` avant de passer à son implémentation en `.java`
   * modifiez `Tokenizer.java` pour ajouter votre nouveau reconnaisseur
   * testez avec `make test` pour vérifier que vous reconnaissez correctement les tokens
+    * lance l'exécutable sur les fichiers du répertoire `TEST/OK/`
   * testez avec `make error` pour vérifier que vous détectez les erreurs
+    * lance l'exécutable sur les fichiers du répertoire `TEST/ERROR/`
 
 ### Exercice 1 : `(a|b)*.aba` (5min)
 
@@ -150,7 +153,7 @@ Exemples :
   * «_, x, _ABC» sont des identificateurs valides
   * «Object, Recognizer» sont des identifcateurs valides qui sont en fait des types
   * «if, then, else, return» sont des identificateurs valides, certains sont en fait des mots-clefs
-  * «1_x» n'est pas un ident valide
+  * «1_x» n'est pas un identificateur valide
 
 ### Exercice 3 : `String` (40min)
 
@@ -162,6 +165,9 @@ Complétez `RecString.java` qui implémente cet AEF et notifie, via `void string
 Exemples :  
   * "une string"
   * "une string contenant 3 caractères _escaped_ : [\"] [\\] [\n]"
+  * "une string incorrecte:
+    <BR>
+    une string ne doit pas contenir de saut de ligne"
 
 ### Exercice 4 : `Comment` (60min)
 
