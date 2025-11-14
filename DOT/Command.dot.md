@@ -44,7 +44,7 @@ node [fontsize=6]
     FORBIDDEN -> FORBIDDEN [label="(_)"]
     
 // == COMPLETION   
-  edge [color=gray]  
+  edge [color=gray, fontcolor=gray]  
     ENTRY, REJECT -> REJECT [label="(_)"]
 
 }

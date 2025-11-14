@@ -7,10 +7,10 @@ node [fontsize=6]
 
   node [shape=plain]
     AEF [fontsize=10, fontcolor=blue, label="a.(b.b*|c)"]
-
+ 
 // == STATE
   node [shape=circle]
-  node [label=""]
+  // node [label=""]
 
 // == ACCEPTING STATES 
   node [peripheries=2]
@@ -37,7 +37,7 @@ node [fontsize=6]
   edge [color=gray, fontcolor=gray]
 
 // == COMPLETION   
-    ENTRY, B,C, REJECT -> REJECT [label="(_)"]
+    ENTRY, A, B, C, REJECT -> REJECT [label="(_)"]
 
 }
 ```

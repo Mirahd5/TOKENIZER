@@ -27,7 +27,7 @@ template: $(TEMPLATE)
 	@dot -T jpg $< > $@
 
 %.dot: %.dot.md
-	sed -e "s|\`\`\`C||g ; s|\`\`\`||g" $< > $@ 
+	@sed -e "s|\`\`\`C||g ; s|\`\`\`||g" $< > $@ 
 
 %.dot.md: 
 	@sed -e "s|TEMPLATE|$*|g" TEMPLATE.dot.md > $@

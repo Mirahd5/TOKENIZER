@@ -46,14 +46,14 @@ constituants d'un texte en couleur comme le fait un éditeur de texte.
   * Vous obtenez un répertoire `TOKENIZER` qui contient un projet java
 
   
-#### II. Dans le répertoire `Tokenizer/` 
+#### II. Dans le répertoire `TOKENIZER/` 
 
 * Ouvrez le fichier [Makefile](Makefile) et ajustez les variables si nécessaire
   * `login_gricad :=` _votre_login_gricad_ 
   * `workspace` à votre organisation de fichiers 
 
-* Dans un terminal dans le répertoire `Tokenizer/` : 
-  testez le `Makefile` à dans le répertoire `Tokenizer/` en exécutant les commandes suivantes
+* Dans un terminal dans le répertoire `TOKENIZER/` : 
+  testez le `Makefile` à dans le répertoire `TOKENIZER/` en exécutant les commandes suivantes
 
   1. `make`
       * vérifiez le positionnement des variables avant de continuer

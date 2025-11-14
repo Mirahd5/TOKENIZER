@@ -55,6 +55,7 @@ public class RecAny extends aRecognizer implements iRecognizer {
 
   // STEP: (ENTRY) -(_)-> ((ACCEPT))
 
+  @Override
   public int step(char c) {
     switch (state) {
       case aAEF.ENTRY:
