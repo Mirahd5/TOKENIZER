@@ -14,7 +14,7 @@ public class RecABC extends aRecognizer implements iRecognizer {
 
   // CONSTRUCTOR
 
-  RecABC(iCharStream cs, iRecognizer.iListener lr) {
+  public RecABC(iCharStream cs, iRecognizer.iListener lr) {
     super(cs);
     this.listener = lr;
   }

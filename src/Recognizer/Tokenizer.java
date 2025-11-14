@@ -21,7 +21,7 @@ public class Tokenizer {
 
   // CONSTRUCTOR
 
-  Tokenizer(iCharStream cs, iListener lr) {
+  public Tokenizer(iCharStream cs, iListener lr) {
     if (lr == null)
       throw new IllegalArgumentException("need a iListener");
     else {
@@ -41,7 +41,9 @@ public class Tokenizer {
       RecAny.iListener,
       RecCommand.iListener,
       RecOMark.iListener,
-      RecCMark.iListener {
+      RecCMark.iListener
+  // <nouveau reconnaisseur>.iListener
+  {
 
     // PROTOCOL: start() ; (_) * ; end()
 
@@ -53,7 +55,9 @@ public class Tokenizer {
   // RECOGNIZER
 
   private boolean recognize() {
-    return command.recognize()
+    return false
+        // || <nouveau reconnaisseur>.recognize()
+        || command.recognize()
         || abc.recognize()
         || omark.recognize()
         || cmark.recognize()

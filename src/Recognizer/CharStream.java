@@ -20,7 +20,7 @@ public class CharStream implements iCharStream {
 
   // CONSTRUCTOR
 
-  CharStream(String input) {
+  public CharStream(String input) {
     backup_index = current_index = 0;
     length = input.length();
     buffer = CharBuffer.allocate(length);

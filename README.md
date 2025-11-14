@@ -124,6 +124,7 @@ Testez vos reconnaisseurs avec les commandes
 
 > Pour chaque reconnaisseur, 
   * faîtes valider l'automate `.dot` avant de passer à son implémentation en `.java`
+  * modifiez `Tokenizer.java` pour ajouter votre nouveau reconnaisseur
   * testez avec `make test` pour vérifier que vous reconnaissez correctement les tokens
   * testez avec `make error` pour vérifier que vous détectez les erreurs
 

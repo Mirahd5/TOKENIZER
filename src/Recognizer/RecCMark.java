@@ -12,7 +12,7 @@ public class RecCMark extends aRecognizer implements iRecognizer {
 
   // CONSTRUCTOR
 
-  RecCMark(iCharStream cs, iListener lr) {
+  public RecCMark(iCharStream cs, iListener lr) {
     super(cs);
     this.listener = lr;
   }

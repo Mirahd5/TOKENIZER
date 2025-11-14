@@ -12,7 +12,7 @@ public class RecOMark extends aRecognizer implements iRecognizer {
 
   // CONSTRUCTOR
 
-  RecOMark(iCharStream cs, iListener lr) {
+  public RecOMark(iCharStream cs, iListener lr) {
     super(cs);
     this.listener = lr;
   }

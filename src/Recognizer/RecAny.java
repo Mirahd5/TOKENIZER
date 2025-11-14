@@ -12,7 +12,7 @@ public class RecAny extends aRecognizer implements iRecognizer {
 
   // CONSTRUCTOR
 
-  RecAny(iCharStream cs, iListener lr) {
+  public RecAny(iCharStream cs, iListener lr) {
     super(cs);
     this.listener = lr;
   }

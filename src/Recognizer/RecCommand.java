@@ -12,7 +12,7 @@ public class RecCommand extends aRecognizer implements iRecognizer {
 
   // CONSTRUCTOR
 
-  RecCommand(iCharStream cs, iListener lr) {
+  public RecCommand(iCharStream cs, iListener lr) {
     super(cs);
     this.listener = lr;
   }

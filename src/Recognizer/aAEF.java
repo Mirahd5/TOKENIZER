@@ -64,7 +64,6 @@ public abstract class aAEF implements iAEF {
    */
   abstract int step(char c);
 
-
   // PREDIFINED STATES
 
   /**
@@ -86,7 +85,6 @@ public abstract class aAEF implements iAEF {
   static final int ACCEPT = 0;
   static final int ENTRY = Integer.MAX_VALUE;
 
-  
   // STATE CATEGORIES
 
   /**

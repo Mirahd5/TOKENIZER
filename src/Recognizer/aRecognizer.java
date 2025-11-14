@@ -1,11 +1,12 @@
-package Recognizer;
 /* Author: Michaël Périn, Polytech Grenoble
  *  
- * LICENCE GPL
+ * LICENCE GPL                                                                                                                                 
  * 
  * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
  * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. Dear USER, see the GNU General Public License for more details.
 */
+
+package Recognizer;
 
 public abstract class aRecognizer extends aAEF {
 
@@ -36,7 +37,7 @@ public abstract class aRecognizer extends aAEF {
     }
   }
 
-  // REQUIRED = à définir dans les sous-classes
+  // ABSTRACT = à définir dans les sous-classes
 
   abstract public void notifyAccept(String recognized);
 
