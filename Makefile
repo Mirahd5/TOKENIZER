@@ -60,9 +60,9 @@ test: $(TEST:%=%.tested)
 error: $(ERROR:%=%.tested)
 
 template:
-	git branch $(login_gricad)
-	git switch $(login_gricad)
-	git push origin $(login_gricad)
+#	git branch $(login_gricad)
+#	git switch $(login_gricad)
+#	git push origin $(login_gricad)
 	$(MAKE) -silent -C src/$(package)/ template
 	$(MAKE) -silent -C DOT/ template
 
