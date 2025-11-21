@@ -23,12 +23,21 @@ node [fontsize=6]
   edge [fontsize=12]
     AEF -> INIT
     
-// == TRANSITIONS
+// == TRANSITION
   edge [fontcolor=green4]
-  INIT -> INIT [label="a"] 
+  INIT -> INIT [label="b"]
+  INIT -> A [label="a"]
+  A ->  A [label="a"]
+  A ->  B [label="b"]
+  B -> ACCEPT  [label="a"]
+  B -> INIT  [label="b"]
+  ACCEPT -> A [label="a"]
+  ACCEPT -> B [label="b"]
+ 
+
 
 // == COMPLETION   
   edge [color=gray, fontcolor=gray]
-    REJECT -> REJECT [label="(_)"]
+    REJECT ,A,B,INIT,ACCEPT-> REJECT [label="(_)"]
 }
 ```

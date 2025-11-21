@@ -22,6 +22,8 @@ node [fontsize=6]
 // == ERROR STATE
   node [fontcolor=red]  
     ERROR [style=filled, fillcolor=red, fontcolor=white]
+    BODY
+    FORBIDDEN
 
 // == INITIAL STATE
   edge [fontsize=12]
@@ -29,6 +31,18 @@ node [fontsize=6]
     
 // == TRANSITIONS
   edge [fontcolor=green4]
+    ENTRY -> BODY [label="\""]
+ 
+    BODY -> ACCEPT [label="\""] 
+    BODY -> ESCAPE [label="\\"]
+    BODY -> FORBIDDEN [label="\\n"]
+    BODY -> FORBIDDEN [label="\\n"]
+    BODY -> BODY [label="(_)"]
+   
+    ESCAPE -> BODY [label="(_)"]
+
+    FORBIDDEN -> ERROR [label="\""]
+    FORBIDDEN -> FORBIDDEN [label="(_)"]
 
 // == NOT CONSUMED
   edge [color=gray, fontcolor=gray]

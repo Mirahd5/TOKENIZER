@@ -19,9 +19,9 @@ node [fontsize=6]
     REJECT [style=filled, fillcolor=black, fontcolor=white]
     ENTRY
 
-// == ERROR STATE
+/* == ERROR STATE
   node [fontcolor=red]  
-    ERROR [style=filled, fillcolor=red, fontcolor=white]
+    ERROR [style=filled, fillcolor=red, fontcolor=white]*/
 
 // == INITIAL STATE
   edge [fontsize=12]
@@ -29,9 +29,14 @@ node [fontsize=6]
     
 // == TRANSITIONS
   edge [fontcolor=green4]
+  ENTRY -> A [label="A->Z , a->z , _ "]
+  A -> A [label="A->Z , a->z , _ , 0->9"]
+
 
 // == NOT CONSUMED
   edge [color=gray, fontcolor=gray]
+  A -> ACCEPT [label="(_)"]
+  ENTRY -> REJECT [label="0->9"]
 
 // == COMPLETION   
     ENTRY, REJECT -> REJECT [label="(_)"]

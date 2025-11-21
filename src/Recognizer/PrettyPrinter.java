@@ -130,6 +130,35 @@ public class PrettyPrinter implements Tokenizer.iListener {
     updateFont(MARK);
     ps.print(string);
   }
+  @Override
+  public void ident(String string) {
+    updateFont(ORANGE);
+    ps.print(string);
+  }
+
+  @Override
+  public void type(String string) {
+    updateFont(PINK+UNDERLINED);
+    ps.print(string);
+  }
+
+  @Override
+  public void keyword(String string) {
+    updateFont(CYAN);
+    ps.print(string);
+  }
+
+    @Override
+  public void string(String string) {
+    updateFont(STRING);
+    ps.print(string);
+  }
+      @Override
+  public void comment(String string) {
+    updateFont(COMMENT);
+    ps.print(string);
+  }
+
 
   // TEST
 
@@ -145,6 +174,12 @@ public class PrettyPrinter implements Tokenizer.iListener {
     pp.opening("opening");
     pp.command("command");
     pp.closing("closing");
+    pp.type("type");
+    pp.keyword("keyword");
+    pp.ident("ident");
+    pp.string("string");
+    pp.comment("comment");
+
 
     pp.end();
   }

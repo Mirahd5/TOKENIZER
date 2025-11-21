@@ -31,6 +31,9 @@ public class Tokenizer {
       command = new RecCommand(cs, lr);
       omark = new RecOMark(cs, lr);
       cmark = new RecCMark(cs, lr);
+      ident= new RecIdent(cs,lr);
+      string= new RecString(cs,lr);
+      comment=new RecComment(cs,lr);
     }
   }
 
@@ -41,7 +44,10 @@ public class Tokenizer {
       RecAny.iListener,
       RecCommand.iListener,
       RecOMark.iListener,
-      RecCMark.iListener
+      RecCMark.iListener,
+      RecIdent.iListener,
+      RecString.iListener,
+      RecComment.iListener
   // <nouveau reconnaisseur>.iListener
   {
 
@@ -57,10 +63,13 @@ public class Tokenizer {
   private boolean recognize() {
     return false
         // || <nouveau reconnaisseur>.recognize()
+        || comment.recognize()
         || command.recognize()
-        || abc.recognize()
+       // || abc.recognize()
         || omark.recognize()
         || cmark.recognize()
+        || string.recognize()
+        || ident.recognize()
         || any.recognize();
   }
 

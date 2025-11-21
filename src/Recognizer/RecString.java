@@ -34,20 +34,53 @@ public class RecString extends aRecognizer implements iRecognizer {
 
   @Override
   public void notifyError(String consumed) {
+    String explanation = new String();
+    {
+      if (state == aAEF.ERROR || state == FORBIDDEN)
+        explanation += "« [\\n] is forbidden in string »";
+      if (state == BODY || state == FORBIDDEN)
+        explanation += "« unterminated string, missing [\"] »";
+    }
+    listener.error(consumed, explanation); 
   }
 
   // STATES
 
-  // STEP
+  static final int BODY = aAEF.ERROR + 1;
+  static final int FORBIDDEN = aAEF.ERROR + 2;
+  static final int ESCAPE = aAEF.ERROR + 3;
 
+  // STEP
   public int step(char c) {
     consume(c);
     switch (state) {
       case aAEF.ENTRY:
+        if (c == '"')
+          return BODY;
+        else
+          return aAEF.REJECT;
+
+      case BODY:
+        if (c == '"')
+          return aAEF.ACCEPT;
+        if (c == '\\')
+          return ESCAPE;
+        if (c == '\n')
+          return FORBIDDEN;
+        else
+          return BODY;
+
+      case ESCAPE:
+        return BODY;
+
+      case FORBIDDEN:
+        if (c == '"')
+          return aAEF.ERROR;
+        else
+          return FORBIDDEN;
 
       default:
         return aAEF.REJECT;
     }
   }
-
 }

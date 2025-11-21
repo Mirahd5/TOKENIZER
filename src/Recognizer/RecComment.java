@@ -37,6 +37,10 @@ public class RecComment extends aRecognizer implements iRecognizer {
   }
 
   // STATES
+     static final int SINGLELINE= aAEF.ACCEPT + 11;
+     static final int OPEN= aAEF.REJECT + 12;
+     static final int ETOILE= aAEF.REJECT + 13;
+     static final int OUT= aAEF.REJECT+ 14;
 
   // STEP
 
@@ -44,7 +48,32 @@ public class RecComment extends aRecognizer implements iRecognizer {
     consume(c);
     switch (state) {
       case aAEF.ENTRY:
-
+        if(c=='/')
+          return OPEN;
+        else
+          return aAEF.REJECT;
+      case OPEN:
+        if(c=='/')
+          return SINGLELINE;
+        if(c=='*')
+          return ETOILE;
+        else
+          return aAEF.REJECT;
+      case SINGLELINE:
+        if (c == '\n')
+          return aAEF.ACCEPT;
+        else
+          return SINGLELINE;
+      case ETOILE:
+        if (c=='*')
+          return OUT;
+        else
+          return ETOILE;
+      case OUT:
+        if (c=='/')
+          return aAEF.ACCEPT;
+        else 
+          return ETOILE;
       default:
         return aAEF.REJECT;
     }
