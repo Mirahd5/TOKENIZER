@@ -13,6 +13,7 @@ node [fontsize=6]
 // == ACCEPTING STATE 
   node [peripheries=2]
     ACCEPT [style=filled, fillcolor=green4, fontcolor=white]
+    SINGLELINE 
     
 // == NON ACCEPTING STATE
   node [peripheries=1]
@@ -29,12 +30,22 @@ node [fontsize=6]
     
 // == TRANSITIONS
   edge [fontcolor=green4]
+  ENTRY -> OPEN [label="/"]
+  OPEN -> SINGLELINE [label="/"]
+  OPEN -> ETOILE [label="*"]
+  SINGLELINE -> SINGLELINE [label="(_)"]
+  SINGLELINE -> ACCEPT [label="\\n"]
+  ETOILE  -> ETOILE [label="(_)"]
+  ETOILE  -> CLOSE [label="*"]
+  CLOSE -> ACCEPT [label="/"]
+  CLOSE -> ETOILE [label="(_)"]
+ 
 
 // == NOT CONSUMED
   edge [color=gray, fontcolor=gray]
 
 // == COMPLETION   
-    ENTRY, REJECT -> REJECT [label="(_)"]
+    ENTRY, REJECT,OPEN -> REJECT [label="(_)"]
  
 }
 ```

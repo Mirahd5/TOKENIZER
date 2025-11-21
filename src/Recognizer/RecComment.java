@@ -34,13 +34,19 @@ public class RecComment extends aRecognizer implements iRecognizer {
 
   @Override
   public void notifyError(String consumed) {
+      String explanation = new String();
+    {
+      if (state == OPEN || state == ETOILE || state == CLOSE)
+        explanation += "« unterminated comment, missing [/]or [*/] »";
+    }
+    listener.error(consumed, explanation); 
   }
 
   // STATES
      static final int SINGLELINE= aAEF.ACCEPT + 11;
      static final int OPEN= aAEF.REJECT + 12;
      static final int ETOILE= aAEF.REJECT + 13;
-     static final int OUT= aAEF.REJECT+ 14;
+     static final int CLOSE= aAEF.REJECT+ 14;
 
   // STEP
 
@@ -66,10 +72,10 @@ public class RecComment extends aRecognizer implements iRecognizer {
           return SINGLELINE;
       case ETOILE:
         if (c=='*')
-          return OUT;
+          return CLOSE;
         else
           return ETOILE;
-      case OUT:
+      case CLOSE:
         if (c=='/')
           return aAEF.ACCEPT;
         else 
