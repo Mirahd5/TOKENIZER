@@ -22,7 +22,7 @@ node [fontsize=6]
 
 // == ERROR STATE
   node [fontcolor=red]  
-    ERROR [style=filled, fillcolor=red, fontcolor=white]
+    //ERROR [style=filled, fillcolor=red, fontcolor=white]
 
 // == INITIAL STATE
   edge [fontsize=12]
@@ -38,6 +38,7 @@ node [fontsize=6]
   ETOILE  -> ETOILE [label="(_)"]
   ETOILE  -> CLOSE [label="*"]
   CLOSE -> ACCEPT [label="/"]
+  CLOSE -> CLOSE [label="*"]
   CLOSE -> ETOILE [label="(_)"]
  
 

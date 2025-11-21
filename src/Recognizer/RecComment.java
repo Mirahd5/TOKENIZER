@@ -44,9 +44,9 @@ public class RecComment extends aRecognizer implements iRecognizer {
 
   // STATES
      static final int SINGLELINE= aAEF.ACCEPT + 11;
-     static final int OPEN= aAEF.REJECT + 12;
-     static final int ETOILE= aAEF.REJECT + 13;
-     static final int CLOSE= aAEF.REJECT+ 14;
+     static final int OPEN= aAEF.ERROR + 12;
+     static final int ETOILE= aAEF.ERROR  + 13;
+     static final int CLOSE= aAEF.ERROR + 14;
 
   // STEP
 
@@ -78,6 +78,8 @@ public class RecComment extends aRecognizer implements iRecognizer {
       case CLOSE:
         if (c=='/')
           return aAEF.ACCEPT;
+        if (c=='*')
+          return CLOSE;  
         else 
           return ETOILE;
       default:
