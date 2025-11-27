@@ -36,11 +36,10 @@ node [fontsize=6]
     BODY -> ACCEPT [label="\""] 
     BODY -> ESCAPE [label="\\"]
     BODY -> FORBIDDEN [label="\\n"]
-    BODY -> FORBIDDEN [label="\\n"]
     BODY -> BODY [label="(_)"]
-   
+    ESCAPEF -> FORBIDDEN [label="(_)"]
     ESCAPE -> BODY [label="(_)"]
-
+    FORBIDDEN -> ESCAPEF [label="\\"]
     FORBIDDEN -> ERROR [label="\""]
     FORBIDDEN -> FORBIDDEN [label="(_)"]
 

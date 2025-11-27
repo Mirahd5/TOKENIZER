@@ -38,6 +38,14 @@ public class RecComment extends aRecognizer implements iRecognizer {
     {
       if (state == OPEN || state == ETOILE || state == CLOSE)
         explanation += "« unterminated comment, missing [/]or [*/] »";
+      if (state == aAEF.ERROR || state == FORBIDDENS)
+        explanation += "« [\\n] is forbidden in string (even if in a comment) »";
+      if (state == BODYS || state == FORBIDDENS)
+        explanation += "« unterminated string, missing [\"]  even if in a comment»";
+      if (state == aAEF.ERROR || state == FORBIDDENC)
+        explanation += "« [\\n] is forbidden in command (even if in a comment) »";
+      if (state == BODYC || state == FORBIDDENC)
+        explanation += "« unterminated command, missing [`]  even if in a comment»";
     }
     listener.error(consumed, explanation); 
   }
@@ -47,6 +55,15 @@ public class RecComment extends aRecognizer implements iRecognizer {
      static final int OPEN= aAEF.ERROR + 12;
      static final int ETOILE= aAEF.ERROR  + 13;
      static final int CLOSE= aAEF.ERROR + 14;
+     static final int BODYS = aAEF.ERROR + 1;
+     static final int FORBIDDENS = aAEF.ERROR + 2;
+     static final int ESCAPES = aAEF.ERROR + 3;
+     static final int BODYC = aAEF.ERROR + 15;
+     static final int FORBIDDENC = aAEF.ERROR + 17;
+     static final int ESCAPEC = aAEF.ERROR + 23;
+     static final int ESCAPEF = aAEF.ERROR + 90;
+
+
 
   // STEP
 
@@ -73,6 +90,10 @@ public class RecComment extends aRecognizer implements iRecognizer {
       case ETOILE:
         if (c=='*')
           return CLOSE;
+        if (c=='"')
+          return BODYS;
+        if (c=='`')
+          return BODYC;
         else
           return ETOILE;
       case CLOSE:
@@ -82,6 +103,45 @@ public class RecComment extends aRecognizer implements iRecognizer {
           return CLOSE;  
         else 
           return ETOILE;
+      case BODYS:
+        if (c == '"')
+          return ETOILE;
+        if (c == '\\')
+          return ESCAPES;
+        if (c == '\n')
+          return FORBIDDENS;
+        else
+          return BODYS;
+      case ESCAPEF:
+        return FORBIDDENS;
+      case ESCAPES:
+        return BODYS;
+
+      case FORBIDDENS:
+        if (c == '"')
+          return aAEF.ERROR;
+        else
+          return FORBIDDENS;
+      case BODYC:
+        if (c == '`')
+          return ETOILE;
+        if (c == '\\')
+          return ESCAPEC;
+        if (c == '\n')
+          return FORBIDDENC;
+        else
+          return BODYC;
+
+      case ESCAPEC:
+        return BODYC;
+
+      case FORBIDDENC:
+        if (c == '`')
+          return aAEF.ERROR;
+        else
+          return FORBIDDENC;
+
+      
       default:
         return aAEF.REJECT;
     }

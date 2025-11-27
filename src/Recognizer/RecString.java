@@ -49,6 +49,7 @@ public class RecString extends aRecognizer implements iRecognizer {
   static final int BODY = aAEF.ERROR + 1;
   static final int FORBIDDEN = aAEF.ERROR + 2;
   static final int ESCAPE = aAEF.ERROR + 3;
+  static final int ESCAPEF = aAEF.ERROR + 90;
 
   // STEP
   public int step(char c) {
@@ -68,12 +69,15 @@ public class RecString extends aRecognizer implements iRecognizer {
         if (c == '\n')
           return FORBIDDEN;
         else
-          return BODY;
-
+          return BODY; 
+      case ESCAPEF:
+        return FORBIDDEN;
       case ESCAPE:
         return BODY;
 
       case FORBIDDEN:
+        if (c == '\\')
+          return ESCAPEF;
         if (c == '"')
           return aAEF.ERROR;
         else
